@@ -12,12 +12,12 @@ import com.sap.model.Book;
 
 @Service
 public class BookService {
-	
+
 	@Autowired
 	private BookRepo repo;
-	
+
 	public List<Book> getAllBooks(){
-		
+
 		List<Book> students = new ArrayList<>();
 		repo.findAll()
 		.forEach(students::add);
@@ -27,20 +27,20 @@ public class BookService {
 		Book book=this.getBookById(id);
 		return (!(book.getIssuedTo() == null));
 	}
-	
+
 	public Book getBookById(String id) {
 		return repo.findById(id).get();
 	}
-	
+
 	public String addBook(Book book) {
 		repo.save(book);
-		return "Success";
+		return "Successfully added";
 	}
-	
+
 	public void deleteBook(String id) {
 		repo.deleteById(id);
 	}
-	
+
 	public void updateBook(Book book) {
 		repo.save(book);
 	}
